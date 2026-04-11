@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rescue Robot Test Suite</title>
+    <!-- Favicon Robot -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -68,7 +70,7 @@
             <h2 class="text-xl font-semibold mb-2 border-b border-gray-700 pb-2"><i class="fa-solid fa-map"></i> Environment Setup</h2>
             
             <!-- Controls Tabs -->
-            <div class="flex gap-2 mb-2">
+            <div class="flex gap-2 mb-2 bg-gray-900/40 p-1.5 rounded-xl border border-gray-700/40">
                 <button class="tab-btn active" data-target="tab-manual">Manual / Paste</button>
                 <button class="tab-btn" data-target="tab-random">Random</button>
                 <button class="tab-btn" data-target="tab-scenario">Scenarios</button>
@@ -239,13 +241,9 @@
 
             <!-- Custom Contact Section -->
             <div class="mt-4 flex flex-col items-center justify-center p-4 bg-gray-800/30 rounded-xl border border-gray-700/50">
-                <p class="text-xs text-gray-400 mb-3 text-center">Found an error or have a suggestion? Click the character to chat!</p>
-                <a href="https://wa.me/201554531921" target="_blank" class="hover:scale-105 transition-transform duration-300 relative group flex items-center gap-4 bg-gray-900 p-3 rounded-full pr-6 border border-cyber-accent/30 hover:border-cyber-accent">
-                    <img src="https://i.ibb.co/Xff3c7qZ/errors.png" alt="Contact Support" class="w-12 h-12 rounded-full object-cover shadow-[0_0_15px_rgba(244,114,182,0.5)]">
-                    <div class="flex flex-col">
-                        <span class="text-white font-bold text-sm group-hover:text-cyber-accent transition-colors">Contact Me</span>
-                        <span class="text-gray-400 text-xs"><i class="fa-brands fa-whatsapp text-green-500 mr-1"></i> WhatsApp</span>
-                    </div>
+                <p class="text-xs text-gray-400 mb-3 text-center">Found an error or have a suggestion?</p>
+                <a href="https://wa.me/201554531921" target="_blank" class="hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_15px_rgba(244,114,182,0.3)] hover:drop-shadow-[0_0_20px_rgba(56,189,248,0.6)]">
+                    <img src="https://i.ibb.co/Xff3c7qZ/errors.png" alt="Contact Support via WhatsApp" class="w-full max-w-[200px] object-contain">
                 </a>
             </div>
 

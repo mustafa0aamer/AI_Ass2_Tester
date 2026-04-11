@@ -35,6 +35,52 @@
             }
         }
     </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .btn-primary {
+                @apply bg-cyber-primary text-gray-900 py-2 px-4 rounded font-semibold hover:bg-blue-400 transition-colors shadow-[0_0_15px_rgba(56,189,248,0.4)] hover:shadow-[0_0_20px_rgba(56,189,248,0.6)];
+            }
+            .theme-modern .btn-primary {
+                @apply bg-modern-primary text-white shadow-md hover:bg-blue-600 hover:shadow-lg;
+            }
+            .btn-secondary {
+                @apply bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-600 transition-colors;
+            }
+            .theme-modern .btn-secondary {
+                @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+            }
+            .tab-btn {
+                @apply px-4 py-2 text-sm font-semibold rounded-lg bg-gray-800 border border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white transition-colors flex-1 text-center cursor-pointer shadow-sm;
+            }
+            .tab-btn.active {
+                @apply bg-cyber-primary border-cyber-primary text-gray-900 hover:bg-blue-400 shadow-[0_0_10px_rgba(56,189,248,0.4)];
+            }
+            .theme-modern .tab-btn {
+                @apply bg-transparent border-transparent text-gray-600 hover:bg-gray-200;
+            }
+            .theme-modern .tab-btn.active {
+                @apply bg-white border-gray-300 text-modern-primary shadow-sm hover:bg-gray-50;
+            }
+            .tool-btn {
+                @apply p-2 rounded flex flex-col items-center justify-center gap-1 border-2 border-transparent transition-all opacity-60 hover:opacity-100;
+            }
+            .tool-btn.active {
+                @apply border-cyber-primary bg-gray-800 opacity-100;
+            }
+            .theme-modern .tool-btn.active {
+                @apply border-modern-primary bg-gray-100;
+            }
+            .grid-cell {
+                @apply aspect-square rounded-lg cursor-pointer transition-all duration-300 flex items-center justify-center text-2xl shadow-md border border-[rgba(255,255,255,0.05)] relative;
+            }
+            .cell-e { @apply bg-gray-600/20 hover:bg-gray-500/30; }
+            .theme-modern .cell-e { @apply bg-gray-200 hover:bg-gray-300; }
+            .cell-r { @apply bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.5)]; z-index: 10; }
+            .cell-s { @apply bg-green-500 text-white shadow-[0_0_15px_rgba(34,197,94,0.5)]; }
+            .cell-f { @apply bg-orange-500 text-white animate-pulse shadow-[0_0_15px_rgba(249,115,22,0.5)]; }
+            .cell-d { @apply bg-gray-500 text-white; }
+        }
+    </style>
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
@@ -140,8 +186,8 @@
             </div>
 
             <!-- The Grid Display -->
-            <div class="flex-grow flex items-center justify-center p-4 bg-gray-800/30 rounded-xl border border-gray-700/50 shadow-inner overflow-hidden min-h-[300px]">
-                <div id="grid-container" class="grid gap-1 relative transition-all">
+            <div class="flex-grow flex items-center justify-center p-6 bg-gray-900/50 rounded-xl border border-gray-700/30 min-h-[300px]">
+                <div id="grid-container" class="grid gap-2 relative transition-all w-full max-w-lg mx-auto">
                     <!-- JavaScript will inject grid cells here -->
                 </div>
             </div>

@@ -1,0 +1,144 @@
+Cairo University  —  Faculty of Computing  and Artificial Intelligence  —  AI Course  
+Assignment 2  |  Spring 2026  |  Page 1  
+Cairo University  
+Faculty of  Computing and Artificial Intelligence  
+Artificial Intelligence Course  
+Assignment 2  
+Rescue Robot Navigation using Search Algorithms in Prolog  
+Overview  
+A rescue robot is deployed inside a damaged building represented as a rectangular grid of size M × N. 
+The building contains survivors that need to be reached, debris cells that block movement, and fire cells 
+that the robot must avoid. Your task is to imple ment two Prolog programs — one using an uninformed 
+search technique and one using an informed search technique — to guide the robot through the building.  
+ 
+Each cell in the grid is one of the following:  
+● r  —  The rescue robot (starting position)  
+● s  —  A survivor to be rescued (goal cell)  
+● d  —  Debris (impassable — the robot cannot enter this cell)  
+● f  —  Fire (impassable — the robot cannot enter this cell)  
+● e  —  An empty, passable cell  
+ 
+Coordinates are expressed as (Row, Col) where (1,1) is the top -left corner of the grid. The grid is defined 
+directly in your Prolog source file as a list of lists (see examples below).  
+Note: If no path exists or there’s no battery charge left (in part 1), the program should print: No path 
+found.  
+Part 1 — Reaching Nearest Survivor  
+Implement a Prolog program that uses uninformed search  with an explicit open list and closed list to find 
+the shortest  path from the robot’s starting position to the nearest survivor . 
+Rules  
+● The robot starts at the cell containing r.  
+● The robot can move in four directions: up, down, left, right. No diagonal moves.  
+● The robot cannot move into a Debris (d) or Fire (f) cell.  
+● The robot can’t pass through the same cell twice  
+● The robot must stay within the boundaries of the grid.  
+● The goal is to reach the nearest cell containing s . 
+● Each move reduces the robot’s battery by 10% . 
+● You must clearly define your state representation.  
+● The expected output is the path from the starting position to the nearest survivor, the number of 
+steps, and the remaining amount of the battery.  
+● Choose the algorithm that you think better suits the problem  
+Cairo University  —  Faculty of Computing  and Artificial Intelligence  —  AI Course  
+Assignment 2  |  Spring 2026  |  Page 2 Example 1  —  4 × 5 Grid  
+ 
+grid([[r, e, d, e, e],  
+      [e, e, f, e, s],  
+      [d, e, e, e, e],  
+      [e, s, e, f, e]]).  
+ 
+Visually:  
+ 
+     Col1  Col2  Col3  Col4  Col5  
+Row1 [ r  ][ e  ][ D  ][ e  ][ e  ]  
+Row2 [ e  ][ e  ][ F  ][ e  ][ S  ]  
+Row3 [ D  ][ e  ][ e  ][ e  ][ e  ]  
+Row4 [ e  ][ S  ][ e  ][ F  ][ e  ]  
+ 
+Sample output (lowest -cost path to the nearest survivor via UCS):  
+Path found: (1,1) -> (2,1) -> (2,2) -> (3,2) ->(4,2) 
+Number of steps: 4 
+Remaining Battery: 60%  
+ 
+Example 2  —  3 × 3 Grid  
+grid([[r, e, e],  
+      [d, f, e],  
+      [e, e, s]]).  
+ 
+Sample output:  
+Path found: (1,1) -> (1,2) -> (1,3) -> (2,3) -> (3,3)  
+Number of steps: 4  
+Remaining Battery: 60%  
+ 
+  
+Cairo University  —  Faculty of Computing  and Artificial Intelligence  —  AI Course  
+Assignment 2  |  Spring 2026  |  Page 3 Part 2 — Maximizing Rescued Survivors  
+Implement a Prolog program in which the rescue robot uses informed search to navigate the grid with 
+the objective of maximizing the number of survivors rescued . The robot is not required to collect all 
+survivors — the goal is to find a path that collects as many survivors as possible.  
+ 
+You must clearly define your state representation  and your heuristic  function  (i.e., the criterion used 
+to evaluate how good a solution is) in comments inside your .pl file . 
+ 
+Rules 
+● The robot starts at the cell containing r.  
+● The goal is to maximize the number of survivors (cells containing s) collected  along the 
+robot’s path. The robot is not required to collect all survivors.  
+● The robot can move in four directions: up, down, left, right. No diagonal moves.  
+● The robot cannot move into a Debris (d) or Fire (f) cell.  
+● The robot cannot revisit a cell already in the current path.  
+● The robot must stay within the boundaries of the grid.  
+● Use Greedy Best -First search  (remember that it may not always reach  the optimal solution)  
+● The expected output is the path from the starting position rescuing max. survivors possible, the 
+number of steps, and number of rescued survivors.  
+ 
+Example 1 — 4 × 5 Grid  
+grid([[r, e, d, e, e],  
+      [e, e, f, e, s],  
+      [d, e, e, e, d], 
+      [e, s, e, f, s]]).  
+Sample output (path that maximizes rescued survivors):  
+Path found: (1,1) -> (2,1) -> (2,2) -> (3,2) -> (4,2) -> ... -> (2,5)  
+Survivors rescued: 2  
+Number of steps: 9  
+ 
+Example 2 — 3 × 3 Grid  
+grid([[r, e, s],  
+      [d, f, e],  
+      [e, s, e]]).  
+Sample output (path that maximizes rescued survivors):  
+Path found: (1,1) -> (1,2) -> (1,3) -> (2,3) -> (3,3) -> (3,2)  
+Survivors rescued: 2  
+Number of steps: 5  
+ 
+ 
+ 
+Cairo University  —  Faculty of Computing  and Artificial Intelligence  —  AI Course  
+Assignment 2  |  Spring 2026  |  Page 4 Important Notes  
+Please read these notes carefully to avoid losing grades.  
+ 
+1. Teams must consist of exactly 3 or 4  students from the same lab group / TA section . 
+2. Submit one ZIP file  containing exactly two .pl files: one for “Part 1” and one for “Part 2”.  
+3. ZIP file naming convention: A2_TAname_Group_ID1_ID2_ID3_ID4  
+4. Only one  team member should turn in the assignment. Upload the final version  only.  
+5. The deadline will be announced on Classroom and  no late submission is allowed.  
+6. Each violation  of the submission format (wrong names, extra files, wrong extension, etc.) will 
+result in the deduction of 1 mark . 
+7. The grid and all parameters must be defined as Prolog facts  inside your .pl file — no runtime 
+user input is required.  
+8. Search algorithms in both parts must use an explicit open list  and an explicit closed list . 
+9. You may use the following built -in predicates only: append, member, length, nth0, nth1, findall, 
+bagof, setof, msort, last, reverse, write, nl, format, number_codes, atom_codes.  
+10. All team members must understand all parts  of the code.  
+11. Cheaters will receive zero or a negative grade and no excuses will be accepted as per the 
+“Plagiarism Scope” document.  
+Grading Criteria  
+State rep resentation:  1 mark  
+Moves : 1 mark  
+Goal test : 1 mark  
+Uninformed search alg orithm:  1 mark  
+Informed search alg orithm:  1 mark  
+Heuristic f unction:  1 mark  
+Required outputs : 1 mark  
+ 
+Note: Evaluation using these criteria will not ju st depend on the written  code  and its correct  output ! It 
+will also depend on your understanding , valid rationale behind  your choices, and your performance 
+during the discussion.  

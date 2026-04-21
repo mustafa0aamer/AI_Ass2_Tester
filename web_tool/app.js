@@ -145,16 +145,24 @@ function setupUI() {
         setTimeout(() => btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy', 2000);
     });
 
-    // Part Selector Changes Heuristic Note
-    document.getElementById('sel-part').addEventListener('change', (e) => {
-        if(e.target.value === "2") {
+    // Part Selector Changes Heuristic Note & Battery Visibility
+    const selPart = document.getElementById('sel-part');
+    const updatePartUI = () => {
+        if(selPart.value === "2") {
             document.getElementById('sel-algo').value = "gbfs";
             document.getElementById('heuristic-note').classList.remove('hidden');
+            document.getElementById('batt-box').classList.add('hidden');
+            document.getElementById('results-grid').classList.replace('grid-cols-3', 'grid-cols-2');
         } else {
             document.getElementById('sel-algo').value = "ucs";
             document.getElementById('heuristic-note').classList.add('hidden');
+            document.getElementById('batt-box').classList.remove('hidden');
+            document.getElementById('results-grid').classList.replace('grid-cols-2', 'grid-cols-3');
         }
-    });
+    };
+    selPart.addEventListener('change', updatePartUI);
+    // Force initial state on load
+    updatePartUI();
 
     // Simulation
     document.getElementById('btn-run').addEventListener('click', runSimulation);

@@ -288,11 +288,13 @@ function runSimulation() {
     }
 
     if (!result) {
-        setResults("No path found or Battery depleted.", "-", "-", "-");
+        let errStr = part === "1" ? "No path found or Battery depleted." : "No path found.";
+        setResults(errStr, "-", "-", "-");
         document.getElementById('res-path').innerHTML = 'No Path';
         simulationPath = [];
     } else {
-        setResults("Success! Path Found.", result.steps, `${100 - (result.steps * 10)}%`, result.rescuedCount);
+        let batteryStr = part === "1" ? `${100 - (result.steps * 10)}%` : "Unlimited";
+        setResults("Success! Path Found.", result.steps, batteryStr, result.rescuedCount);
         let pathStr = result.path.map(p => `(${p.r+1},${p.c+1})`).join(' &rarr; ');
         document.getElementById('res-path').innerHTML = pathStr;
         simulationPath = result.path;
@@ -405,8 +407,6 @@ function runGBFS(start, totalSurvivors) {
         
         if(closed.has(stateKey)) continue;
         closed.add(stateKey);
-
-        if (curr.steps >= 10) continue;
 
         for (let dir of DIRS) {
             let nr = curr.r + dir.dr;

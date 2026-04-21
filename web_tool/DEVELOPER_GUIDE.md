@@ -44,7 +44,7 @@ The tool contains a parser that transforms Prolog formatted arrays `grid([[r, e,
 The Assignment requires algorithms that navigate a robot using specific battery and step limits. The algorithms are written in JavaScript to simulate the ideal Prolog state-space search.
 
 1.  **Uniform Cost Search (UCS) for Part 1**: Used to find the nearest survivor. Since step cost is uniform ($1$), UCS behaves essentially as BFS. It maintains a Queue and a Closed Set (`r,c` string formats) and halts at 10 steps max (100% battery).
-2.  **Greedy Best-First Search (GBFS) for Part 2**: Used to maximize rescued survivors within 10 steps.
+2.  **Greedy Best-First Search (GBFS) for Part 2**: Used to maximize rescued survivors. Note that unlike Part 1, *Part 2 does not use the battery/step limit* according to assignment specifications.
     *   **Queue**: Priority Queue sorted by Heuristic value.
     *   **Tie-Breaking Priority**: Stable string sorting handles UP, DOWN, LEFT, RIGHT priorities smoothly. 
     *   **Heuristic Calculation**: $h(n) = (\text{Total Unrescued Survivors} \times 100) + \text{Manhattan Distance to closest unrescued survivor}$.

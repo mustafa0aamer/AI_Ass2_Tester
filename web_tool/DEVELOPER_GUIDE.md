@@ -16,15 +16,14 @@ This project is built to be a **zero-configuration Static Single Page Applicatio
 
 ## 2. File Structure
 
-*   `index.html`: The main skeleton of the app. It holds the structural layout (Left Panel Setup, Right Panel Simulator), the Tailwind runtime configuration, and all inline component styles.
+*   `index.html`: The main skeleton and brain of the app. It holds the structural layout (Left Panel Setup, Right Panel Simulator), the Tailwind runtime configuration, all inline component styles, and **all of the core JavaScript engine logic** embedded securely at the bottom of the file to prevent browser caching/CORS issues when students run it locally.
 *   `style.css`: Contains CSS rules that cannot be natively handled by Tailwind utilities (e.g., custom scrollbars, keyframe glow animations, theme specific color transitions).
-*   `app.js`: The central brain of the application. It handles user interactions, grid rendering, Prolog string parsing, and the core search algorithms.
 
 ---
 
-## 3. Core Logic & State Management (`app.js`)
+## 3. Core Logic & State Management (Inside `index.html`)
 
-The app avoids complex framework state (like React Hooks) in favor of simple, fast global variables heavily commented in `app.js`.
+The app avoids complex framework state (like React Hooks) in favor of simple, fast global variables heavily commented in the Javascript `<script>` tag.
 
 ### The Grid State
 ```javascript

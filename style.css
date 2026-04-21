@@ -1,0 +1,86 @@
+/* Base Overrides */
+html {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Theme Toggle Slider */
+.theme-cyber #theme-toggle:checked ~ .toggle-bg {
+    background-color: #3B82F6;
+}
+.theme-modern #theme-toggle:checked ~ .toggle-bg {
+    background-color: #3B82F6;
+}
+#theme-toggle:checked ~ .dot {
+    transform: translateX(100%);
+}
+
+#theme-toggle:not(:checked) ~ .toggle-bg {
+    background-color: #4B5563;
+}
+
+/* cyber vs modern overrides */
+.theme-modern body {
+    background-color: #f0f4f8;
+    color: #1a202c;
+}
+.theme-modern .panel {
+    background-color: #ffffff;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+}
+.theme-modern .bg-gray-800, .theme-modern .bg-gray-900, .theme-modern .bg-gray-800\/50, .theme-modern .bg-gray-800\/30 {
+    background-color: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+    color: #334155;
+}
+.theme-modern input, .theme-modern select, .theme-modern textarea {
+    background-color: #fff !important;
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+}
+.theme-modern .text-white { color: #0f172a !important; }
+.theme-modern .text-gray-400 { color: #64748b !important; }
+.theme-modern .text-gray-300 { color: #475569 !important; }
+.theme-modern .text-green-400 { color: #16a34a !important; }
+
+/* Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border-radius: 10px;
+}
+
+/* Base grid cell shadow structure */
+.grid-cell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+.theme-modern .grid-cell::before {
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* Path animation glowing */
+.cell-path {
+    animation: pathGlow 1.5s infinite alternate;
+}
+
+@keyframes pathGlow {
+    from { box-shadow: inset 0 0 10px rgba(244, 114, 182, 0.5), 0 0 10px rgba(244, 114, 182, 0.5); background-color: rgba(244, 114, 182, 0.4); }
+    to { box-shadow: inset 0 0 20px rgba(244, 114, 182, 0.8), 0 0 20px rgba(244, 114, 182, 0.8); background-color: rgba(244, 114, 182, 0.7); }
+}
+
+.theme-modern .cell-path {
+    background-color: #fbcfe8 !important;
+    border: 2px solid #ec4899;
+    box-shadow: none !important;
+    animation: none;
+}
